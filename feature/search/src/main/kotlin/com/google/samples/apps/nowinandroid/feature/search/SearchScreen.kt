@@ -451,12 +451,13 @@ private fun SearchToolbar(
         verticalAlignment = Alignment.CenterVertically,
         modifier = modifier.fillMaxWidth(),
     ) {
-        IconButton(onClick = { onBackClick() }) {
+        IconButton(onClick = { onBackClick() } ) {
             Icon(
                 imageVector = NiaIcons.ArrowBack,
                 contentDescription = stringResource(
                     id = string.core_ui_back,
                 ),
+                modifier = Modifier.testTag("backButton")
             )
         }
         SearchTextField(
