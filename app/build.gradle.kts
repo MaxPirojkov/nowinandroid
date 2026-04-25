@@ -128,6 +128,10 @@ dependencies {
     androidTestImplementation(libs.hilt.android.testing)
     androidTestImplementation(libs.kotlin.test)
 
+    androidTestImplementation("io.github.kakaocup:compose:1.1.0")
+    androidTestImplementation("com.kaspersky.android-components:kaspresso:1.6.1")
+    androidTestImplementation("com.kaspersky.android-components:kaspresso-compose-support:1.6.1")
+
     baselineProfile(projects.benchmarks)
 }
 
