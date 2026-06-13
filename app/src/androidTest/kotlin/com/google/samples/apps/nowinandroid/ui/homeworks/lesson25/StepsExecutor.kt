@@ -16,14 +16,11 @@
 
 package com.google.samples.apps.nowinandroid.ui.homeworks.lesson25
 
-import androidx.compose.ui.semantics.SemanticsProperties
-import androidx.compose.ui.semantics.getOrNull
 import com.kaspersky.kaspresso.testcases.core.testcontext.TestContext
 import com.kaspersky.kaspresso.testcases.models.info.StepInfo
 import io.github.kakaocup.compose.node.action.NodeActions
 import io.github.kakaocup.compose.node.assertion.NodeAssertions
-import kotlin.concurrent.atomics.AtomicReference
-import kotlin.concurrent.atomics.ExperimentalAtomicApi
+import java.util.concurrent.atomic.AtomicReference
 
 class StepsExecutor(val testContext: TestContext<*>) {
     private var nextStepName: String = ""
@@ -49,7 +46,6 @@ class StepsExecutor(val testContext: TestContext<*>) {
         }
     }
 
-    @OptIn(ExperimentalAtomicApi::class)
     fun <T> extract(
         step: String,
         item: NodeActions,

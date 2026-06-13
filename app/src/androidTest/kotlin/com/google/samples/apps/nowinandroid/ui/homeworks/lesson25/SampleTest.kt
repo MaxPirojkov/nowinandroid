@@ -16,22 +16,31 @@
 
 package com.google.samples.apps.nowinandroid.ui.homeworks.lesson25
 
-import androidx.compose.ui.test.ExperimentalTestApi
+import androidx.compose.ui.test.junit4.createAndroidComposeRule
+import com.google.samples.apps.nowinandroid.MainActivity
 import com.google.samples.apps.nowinandroid.ui.homeworks.homework14.MainScreen
 import com.kaspersky.components.composesupport.config.withComposeSupport
 import com.kaspersky.kaspresso.kaspresso.Kaspresso
 import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
-import io.github.kakaocup.compose.node.element.ComposeScreen.Companion.onComposeScreen
-import kotlin.concurrent.atomics.AtomicReference
-import kotlin.concurrent.atomics.ExperimentalAtomicApi
-import kotlin.test.Test
+import dagger.hilt.android.testing.HiltAndroidRule
+import dagger.hilt.android.testing.HiltAndroidTest
+import org.junit.Rule
+import org.junit.Test
+import java.util.concurrent.atomic.AtomicReference
 
+@HiltAndroidTest
 class SampleTest: TestCase(Kaspresso.Builder.withComposeSupport()) {
-    @OptIn(ExperimentalTestApi::class, ExperimentalAtomicApi::class)
+
+    @get:Rule(order = 0)
+    val hiltRule = HiltAndroidRule(this)
+    @get:Rule(order = 1)
+    val composeTestRule = createAndroidComposeRule<MainActivity>()    // запускаем Активити
+    val mainScreen = MainScreen(composeTestRule)
+
     @Test
     fun checkElementOnScreen() = run {
-            onComposeScreen<MainScreen> {
-                val settingBtnText = AtomicReference<List<String>>(listOf())
+            mainScreen {
+                val settingBtnText = AtomicReference<List<String>>()
                 action {
                     click(setting)
                     extract(setting, settingBtnText) {

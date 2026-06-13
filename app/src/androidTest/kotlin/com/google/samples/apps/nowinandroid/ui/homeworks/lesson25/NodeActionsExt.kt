@@ -16,18 +16,19 @@
 
 package com.google.samples.apps.nowinandroid.ui.homeworks.lesson25
 
-import androidx.compose.ui.node.ModifierNodeElement
 import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.semantics.getOrNull
 import io.github.kakaocup.compose.node.action.NodeActions
 
 private val nameHashMap = mutableMapOf<NodeActions, NameHierarchy>()
 
-fun NodeActions.name(nameHierarchy: NameHierarchy) {
+fun <T: NodeActions> T.name(nameHierarchy: NameHierarchy): T {
     nameHashMap[this] = nameHierarchy
+    return this
 }
 
-fun NodeActions.getName(): NameHierarchy = nameHashMap.getOrDefault(this, NameHierarchy("No label"))
+fun NodeActions.getName(): NameHierarchy = nameHashMap.getOrDefault(this, NameHierarchy("! No label"))
+
 
 fun NodeActions.withParent(elementName: String) = getName().withParent(elementName)
 

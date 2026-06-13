@@ -23,6 +23,9 @@ import androidx.compose.ui.test.hasParent
 import androidx.compose.ui.test.hasTestTag
 import com.google.samples.apps.nowinandroid.core.designsystem.LazyListItemPositionSemantics
 import com.google.samples.apps.nowinandroid.core.designsystem.LazyListLengthSemantics
+import com.google.samples.apps.nowinandroid.ui.homeworks.lesson25.NameHierarchy
+import com.google.samples.apps.nowinandroid.ui.homeworks.lesson25.name
+import com.google.samples.apps.nowinandroid.ui.homeworks.lesson25.withParent
 import io.github.kakaocup.compose.node.element.ComposeScreen
 import io.github.kakaocup.compose.node.element.KNode
 import io.github.kakaocup.compose.node.element.lazylist.KLazyListItemNode
@@ -45,10 +48,10 @@ class MainScreen(semanticsProvider: SemanticsNodeInteractionsProvider) :
         useUnmergedTree = true
     }
 
-    val setting = child<KNode> {
+    val setting = child<KNode>{
         hasTestTag("NiaTopAppBarIconSetting")
         useUnmergedTree = true
-    }
+    }.name(NameHierarchy("Button settings"))
 
     val title = child<KNode> {
         hasTestTag("title")

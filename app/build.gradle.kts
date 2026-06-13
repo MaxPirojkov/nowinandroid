@@ -154,3 +154,14 @@ baselineProfile {
 dependencyGuard {
     configuration("prodReleaseRuntimeClasspath")
 }
+
+configurations.all {
+    resolutionStrategy.eachDependency {
+        if (requested.group == "androidx.drawerlayout") {
+            useVersion("1.1.1")
+        }
+        if (requested.group == "com.google.protobuf" && requested.name == "protobuf-lite") {
+            useTarget("com.google.protobuf:protobuf-javalite:3.25.3")
+        }
+    }
+}

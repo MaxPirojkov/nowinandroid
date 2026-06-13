@@ -17,9 +17,7 @@
 package com.google.samples.apps.nowinandroid.ui.homeworks.lesson25
 
 import io.github.kakaocup.compose.node.action.NodeActions
-import io.github.kakaocup.compose.node.assertion.NodeAssertions
-import kotlin.concurrent.atomics.AtomicReference
-import kotlin.concurrent.atomics.ExperimentalAtomicApi
+import java.util.concurrent.atomic.AtomicReference
 
 class ActionSteps(private val execute: StepsExecutor) : StepsDSL<ActionSteps>() {
     override val self = this
@@ -30,15 +28,13 @@ class ActionSteps(private val execute: StepsExecutor) : StepsDSL<ActionSteps>() 
             item
         )
     }
-
-    @OptIn(ExperimentalAtomicApi::class)
     fun <T> extract(
         item: NodeActions,
         container: AtomicReference<T>,
         extraction: (item: NodeActions) -> T,
     ) {
         execute.extract(
-            "Recive data from element '${item.getName()}'",
+            "Receive data from element '${item.getName()}'",
             item,
             container,
             extraction
