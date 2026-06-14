@@ -21,6 +21,7 @@ import com.google.samples.apps.nowinandroid.MainActivity
 import com.google.samples.apps.nowinandroid.ui.homeworks.homework14.MainScreen
 import com.kaspersky.components.composesupport.config.withComposeSupport
 import com.kaspersky.kaspresso.kaspresso.Kaspresso
+import com.kaspersky.kaspresso.kaspresso.Kaspresso.Builder
 import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
@@ -34,7 +35,7 @@ class SampleTest: TestCase(Kaspresso.Builder.withComposeSupport()) {
     @get:Rule(order = 0)
     val hiltRule = HiltAndroidRule(this)
     @get:Rule(order = 1)
-    val composeTestRule = createAndroidComposeRule<MainActivity>()    // запускаем Активити
+    val composeTestRule = createAndroidComposeRule<MainActivity>()
     val mainScreen = MainScreen(composeTestRule)
 
     @Test
